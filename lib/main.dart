@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Twitter UI Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -26,7 +26,31 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade800,
+      appBar: AppBar(
+        elevation: 1,
+        centerTitle: true,
+        title: const Text(
+          'Twitter',
+          style: TextStyle(color: Colors.black),
+        ),
+        backgroundColor: Colors.white,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.account_circle_outlined,
+            size: 40,
+            color: Colors.black,
+          ),
+          onPressed: () {},
+        ),
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.timeline_sharp,
+                color: Colors.black,
+              ))
+        ],
+      ),
     );
   }
 }
