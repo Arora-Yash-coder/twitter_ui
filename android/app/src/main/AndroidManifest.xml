@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.twitter_ui">
    <application
-        android:label="twitter_ui"
+        android:label="Spotify UI"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
