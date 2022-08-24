@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Twitter UI Demo',
+      title: 'Twitter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
