@@ -1,56 +1,44 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:twitter_ui/models/user.dart';
+import 'package:twitter_ui/screens/wrapper.dart';
+import 'package:twitter_ui/services/auth.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
+
+  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Twitter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 1,
-        centerTitle: true,
-        title: const Text(
-          'Twitter',
-          style: TextStyle(color: Colors.black),
-        ),
-        backgroundColor: Colors.white,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.account_circle_outlined,
-            size: 40,
-            color: Colors.black,
-          ),
-          onPressed: () {},
-        ),
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.timeline_sharp,
-                color: Colors.black,
-              ))
-        ],
-      ),
+    return FutureBuilder(
+      future: _initialization,
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          // return SomethingWentWrong();
+        }
+        if (snapshot.connectionState == ConnectionState.done) {
+          return StreamProvider<UserModel?>.value(
+            value: AuthService().user,
+            initialData: null,
+            child: const MaterialApp(
+              home: Wrapper(),
+            ),
+          );
+        }
+        return const Center(
+            child: Text(
+          "Loading",
+          textDirection: TextDirection.ltr,
+        ));
+      },
     );
   }
 }

@@ -37,6 +37,8 @@ dependencies:
   rename: ^2.0.1
   firebase_core: ^1.14.1
   google_fonts: ^2.3.1
+  firebase_auth: ^3.6.4
+  provider: ^6.0.3
 
 
 dev_dependencies:
