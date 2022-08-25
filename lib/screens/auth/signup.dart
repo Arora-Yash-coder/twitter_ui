@@ -46,13 +46,13 @@ class _SignUpState extends State<SignUp> {
                 onPressed: () async {
                   _authService.signIn(email, password);
                 },
-                child: const Text('SignUP'),
+                child: const Text('SignIN'),
               ),
               MaterialButton(
                 onPressed: () async {
                   _authService.signUp(email, password);
                 },
-                child: const Text('SignIN'),
+                child: const Text('SignUP'),
               ),
             ],
           ),
