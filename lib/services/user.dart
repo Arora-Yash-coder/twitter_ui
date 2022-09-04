@@ -29,10 +29,10 @@ class UserService {
       data['name'] = name;
     }
     if (bannerImageUrl != '') {
-      data['bannerImageUrl'] = name;
+      data['bannerImageUrl'] = bannerImageUrl;
     }
     if (profileImageUrl != '') {
-      data['profileImageUrl'] = name;
+      data['profileImageUrl'] = profileImageUrl;
     }
 
     await FirebaseFirestore.instance
