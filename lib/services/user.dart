@@ -20,7 +20,7 @@ class UserService {
     }
     if (profileImage != null) {
       // Save to Storage
-      bannerImageUrl = await utilsService.uploadFile(profileImage,
+      profileImageUrl = await utilsService.uploadFile(profileImage,
           'user/profile/${FirebaseAuth.instance.currentUser?.uid}/profile');
     }
 
