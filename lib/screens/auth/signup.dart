@@ -9,7 +9,7 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  //
+  // AuthService Initialization
   final AuthService _authService = AuthService();
 
   // User Details
@@ -22,7 +22,7 @@ class _SignUpState extends State<SignUp> {
       appBar: AppBar(
         backgroundColor: Colors.blue,
         elevation: 8,
-        title: const Text('SignUP'),
+        title: const Text('SignUP/SignIN'),
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(

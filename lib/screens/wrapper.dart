@@ -4,6 +4,7 @@ import 'package:twitter_ui/models/user.dart';
 import 'package:twitter_ui/screens/auth/signup.dart';
 import 'package:twitter_ui/screens/main/home.dart';
 import 'package:twitter_ui/screens/main/posts/add.dart';
+import 'package:twitter_ui/screens/main/profile/edit.dart';
 import 'package:twitter_ui/screens/main/profile/profile.dart';
 
 class Wrapper extends StatelessWidget {
@@ -23,6 +24,7 @@ class Wrapper extends StatelessWidget {
         '/': (context) => const Home(),
         '/add': (context) => const Add(),
         '/profile': (context) => const Profile(),
+        '/edit': (context) => const Edit(),
       },
     );
   }

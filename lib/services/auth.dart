@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:twitter_ui/models/user.dart';
 
@@ -14,11 +15,16 @@ class AuthService {
 
   Future signUp(email, password) async {
     try {
-      User user = (await auth.createUserWithEmailAndPassword(
+      UserCredential user = (await auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
-      )) as User;
-      userFormFirebaseUser(user);
+      ));
+
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.user?.uid)
+          .set({'name': email, 'email': email});
+      userFormFirebaseUser(user.user);
     } on FirebaseAuthException catch (e) {
       print(e);
     } catch (e) {
@@ -28,11 +34,11 @@ class AuthService {
 
   Future signIn(email, password) async {
     try {
-      User user = (await auth.signInWithEmailAndPassword(
+      UserCredential user = (await auth.signInWithEmailAndPassword(
         email: email,
         password: password,
-      )) as User;
-      userFormFirebaseUser(user);
+      ));
+      userFormFirebaseUser(user.user);
     } on FirebaseAuthException catch (e) {
       print(e);
     } catch (e) {

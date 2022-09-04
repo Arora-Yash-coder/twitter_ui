@@ -15,14 +15,17 @@ class MyApp extends StatelessWidget {
 
   final Future<FirebaseApp> _initialization = Firebase.initializeApp();
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
       future: _initialization,
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          // return SomethingWentWrong();
+          return Center(
+              child: Text(
+            snapshot.toString(),
+            textDirection: TextDirection.ltr,
+          ));
         }
         if (snapshot.connectionState == ConnectionState.done) {
           return StreamProvider<UserModel?>.value(
