@@ -16,12 +16,12 @@ class UserService {
     if (bannerImage != null) {
       // Save to storage
       bannerImageUrl = await utilsService.uploadFile(bannerImage,
-          'user/profile${FirebaseAuth.instance.currentUser?.uid}/banner');
+          'user/profile/${FirebaseAuth.instance.currentUser?.uid}/banner');
     }
     if (profileImage != null) {
       // Save to Storage
       bannerImageUrl = await utilsService.uploadFile(profileImage,
-          'user/profile${FirebaseAuth.instance.currentUser?.uid}/profile');
+          'user/profile/${FirebaseAuth.instance.currentUser?.uid}/profile');
     }
 
     Map<String, Object> data = HashMap();
