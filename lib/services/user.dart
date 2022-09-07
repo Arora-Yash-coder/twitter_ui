@@ -8,6 +8,19 @@ import 'package:twitter_ui/services/utils.dart';
 
 class UserService {
   UtilsService utilsService = UtilsService();
+  // List<UserModel?> userListFromQuerySnapshot(QuerySnapshot snapshot) {
+  //   return snapshot.docs.map((doc) {
+  //     return snapshot != null
+  //         ? UserModel(
+  //             id: doc.id,
+  //             name: doc['name'],
+  //             email: doc['email'],
+  //             profileImageUrl: doc['profileImageUrl'],
+  //             bannerImageUrl: doc['bannerImageUrl'],
+  //           )
+  //         : null;
+  //   }).toList();
+  // }
 
   UserModel? userFromFirebaseSnapshot(DocumentSnapshot? snapshot) {
     final data = snapshot?.data() as Map<String, dynamic>;
@@ -29,6 +42,17 @@ class UserService {
         .snapshots()
         .map(userFromFirebaseSnapshot);
   }
+
+  // Stream<List<UserModel?>> queryByName(search) {
+  //   return FirebaseFirestore.instance
+  //       .collection("users")
+  //       .orderBy('name')
+  //       .startAt([search])
+  //       .endAt([search + '/uf8ff'])
+  //       .limit(10)
+  //       .snapshots()
+  //       .map();
+  // }
 
   Future updateProfile(
       File? bannerImage, File? profileImage, String name) async {
